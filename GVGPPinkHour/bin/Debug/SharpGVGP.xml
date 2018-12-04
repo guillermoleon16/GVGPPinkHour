@@ -1,0 +1,928 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpGVGP</name>
+    </assembly>
+    <members>
+        <member name="T:SharpGVGP.Proposed.Move">
+            <summary>
+            Possible actions for the executer.
+            2048: First four
+            Jelly Escape: First nine
+            Pink Hour: All eighteen
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.UP">
+            <summary>
+            Press W
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.DOWN">
+            <summary>
+            Press S
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.LEFT">
+            <summary>
+            Press A
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.RIGHT">
+            <summary>
+            Press D
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.NOTHING">
+            <summary>
+            Don't press anything
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.UPLEFT">
+            <summary>
+            Press W + A
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.UPRIGHT">
+            <summary>
+            Press W + D
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.DOWNLEFT">
+            <summary>
+            Press S + A
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.DOWNRIGHT">
+            <summary>
+            Press S + D
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.JUMP">
+            <summary>
+            Press Z
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.UPJUMP">
+            <summary>
+            Press W + Z
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.DOWNJUMP">
+            <summary>
+            Press S + Z
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.LEFTJUMP">
+            <summary>
+            Press A + Z
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.RIGHTJUMP">
+            <summary>
+            Press D + Z
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.UPLEFTJUMP">
+            <summary>
+            Press W + A + Z
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.UPRIGHTJUMP">
+            <summary>
+            Press W + D + Z
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.DOWNLEFTJUMP">
+            <summary>
+            Press S + A + Z
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Proposed.Move.DOWNRIGHTJUMP">
+            <summary>
+            Press S + D + Z
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.CryptoRandom">
+            <summary>
+            This class provides generating more reliable random <c>int</c>
+            and <c>double</c> values using the <c>RNGCryptoServiceProvider</c> class.
+            </summary>
+        </member>
+        <member name="P:SharpGVGP.CryptoRandom.DoubleValue">
+            <summary>
+            The last generated random <c>double</c> value.
+            </summary>
+        </member>
+        <member name="P:SharpGVGP.CryptoRandom.IntValue">
+            <summary>
+            The last generated random <c>int</c> value.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.CryptoRandom.#ctor">
+            <summary>
+            Creates a new instance of the <c>CryptoRandom</c> class, generating two
+            initial random values for <c>DoubleValue</c> and <c>IntValue</c>.
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.Utils.MetricTypes">
+            <summary>
+            Metrics provided by the DataProvider class. </summary>
+        </member>
+        <member name="F:SharpGVGP.Utils.MetricTypes.Times">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Utils.MetricTypes.Performances">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Utils.MetricTypes.Coverages">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.Utils.DataProvider">
+            <summary>
+            This class allows for threadsafe metric exchange between the agent and the UI.
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Utils.DataProvider.Coverages">
+            <summary>
+            Metric list available for exchange
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Utils.DataProvider.Times">
+            <summary>
+            Metric list available for exchange
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Utils.DataProvider.Performances">
+            <summary>
+            Metric list available for exchange
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.DataProvider.#ctor">
+            <summary>
+            Creates an instance of the DataProvider class, with its queues empty and
+            ready to use.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.DataProvider.ResetData">
+            <summary>
+            Empties all metric queues available.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.DataProvider.AddCoverage(System.Double,System.Double)">
+            <summary>
+            Adds a coverage value to the <c>Coverages</c> queue.
+            </summary>
+            <param name="coverage">
+            Coverage value to be added to the queue.</param>
+            <param name="time">
+            Time value to be added to the queue.</param>
+            <returns>
+            Returns an indicator of the success of the operation</returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.DataProvider.AddPerformance(System.Double)">
+            <summary>
+            Adds a performance value to the Performances queue.
+            </summary>
+            <param name="item">
+            Value to be added to the queue.</param>
+            <returns>
+            Returns an indicator of the success of the operation</returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.DataProvider.GetCoverages">
+            <summary>
+            Dequeues all the elements stored on the Coverages and Times queues
+            as a List of pairs [Coverage, Time]. 
+            </summary>
+            <returns>
+            List of previously stored coverage and times values</returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.DataProvider.GetPerformances">
+            <summary>
+            Dequeues all the elements stored on the Performances queue as a List. 
+            </summary>
+            <returns>
+            List of previously stored performance values</returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.DataProvider.EmptyQueue(SharpGVGP.Utils.MetricTypes)">
+            <summary>
+            Dequeues the contents to the desired metric queue as a List. 
+            </summary>
+            <param name="name">
+            Metric to be extracted</param>
+            <seealso cref="T:SharpGVGP.Utils.MetricTypes"/>
+            <returns>
+            List of previously stored metric values</returns>
+        </member>
+        <member name="T:SharpGVGP.Utils.VisionManager">
+            <summary>
+            This class allows retrieving of Screenshots of different resolutions.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.#ctor">
+            <summary>
+            Creates an instance of the <c>VisionManager</c> class with vision rectangle
+            dimensions 0x0.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates an instance of the <c>VisionManager</c> class with vision rectangle
+            dimensions set by the user.
+            </summary>
+            <param name="xi">X coordinate of the top left corner</param>
+            <param name="xf">X coordinate of the bottom right corner</param>
+            <param name="yi">Y coordinate of the top left corner</param>
+            <param name="yf">Y coordinate of the bottom right corner</param>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.#ctor(System.Int32[])">
+            <summary>
+            Creates an instance of the <c>VisionManager</c> class with vision rectangle
+            dimensions set by the user.
+            </summary>
+            <param name="coordinates">Vector with the coordinates of the
+            vision rectangle. {Xi,Xf,Yi,Yf}</param>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.SetVisionRectangle(System.Int32[])">
+            <summary>
+            Allows setting the vision rectangle using a vector containing the 
+            dimensions set by the user.
+            </summary>
+            <param name="coordinates">Vector with the coordinates of the
+            vision rectangle. {Xi,Xf,Yi,Yf}</param>
+            <returns>Returns if the selected triangle is valid</returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.SetVisionRectangle(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Allows setting of the vision rectangle.
+            </summary>
+            <param name="xi">X coordinate of the top left corner</param>
+            <param name="xf">X coordinate of the bottom right corner</param>
+            <param name="yi">Y coordinate of the top left corner</param>
+            <param name="yf">Y coordinate of the bottom right corner</param>
+            <returns>Returns if the selected triangle is valid</returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.GetMaxRes">
+            <summary>
+            Returns the maximum resolution available for the complete current
+            vision area.
+            </summary>
+            <returns><c>{X resolution, Y resolution}</c></returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.GetMaxRes(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns the maximum resolution available for a displaced sub-section
+            of the current vision area.
+            </summary>
+            <param name="offXi">Displacement of the top left X coordinate in pixels</param>
+            <param name="offYi">Displacement of the top left Y coordinate in pixels</param>
+            <param name="spanX">Width of the sub-section in pixels</param>
+            <param name="spanY">Height of the sub-section in pixels</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.GetMaxXY(System.Int32,System.Int32)">
+            <summary>
+            Returns the maximum X and Y displacement for the given Witdh and
+            Height of the vision sub-section.
+            </summary>
+            <param name="spanX">Width of the sub-section in pixels</param>
+            <param name="spanY">Height of the sub-section in pixels</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.GetView">
+            <summary>
+            Returns a screenshot of the selected region at full resolution
+            </summary>
+            <returns>Bitmap of full resolution</returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.GetView(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns a screenshot of a sub-region of the selected region at full resolution
+            </summary>
+            <param name="xOffset">Displacement in X of the region</param>
+            <param name="yOffset">Displacement in Y of the region</param>
+            <param name="xSpan">Width of the sub-region</param>
+            <param name="ySpan">Height of the sub-region</param>
+            <returns>Screenshot of the sub-region</returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.GetViewDownsampled(System.Int32,System.Int32)">
+            <summary>
+            Returns a downsampled bitmap of the selected resolution
+            </summary>
+            <param name="xResolution">Number of rows</param>
+            <param name="yResolution">Number of columns</param>
+            <returns>Returns the downsampled screenshot</returns>
+        </member>
+        <member name="M:SharpGVGP.Utils.VisionManager.GetViewDownsampled(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns a downsampled screenshot of a selected sub-region
+            </summary>
+            <param name="xResolution">Number of rows</param>
+            <param name="yResolution">Number of columns</param>
+            <param name="xOffset">Displacement in X of the region</param>
+            <param name="yOffset">Displacement in Y of the region</param>
+            <param name="xSpan">Width of the sub-region</param>
+            <param name="ySpan">Height of the sub-region</param>
+            <returns>Downsampled screenshot of the sub-region</returns>
+        </member>
+        <member name="T:SharpGVGP.Utils.SnippetTool">
+            <summary>
+            Allows for selection of a region of the screen.
+            <example>
+            This sample shows how to use <see cref="T:SharpGVGP.Utils.SnippetTool"/> to select a region of 
+            the screen.
+            <code>
+            Type method()
+            {
+                SnippetTool S = new SnippetTool();
+                S.ShowDialog();
+                int[] Boundaries = S.GetVisionBoundaries();
+            }
+            </code> 
+            </example>
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.Utils.SnippetTool.selectPen">
+            <summary>
+            Pen selector for the cursor
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.SnippetTool.#ctor">
+            <summary>
+            Gets an instance of the <c>SnippetTool</c> class.
+            Call the <c>ShowDialog()</c> method to select a region of the screen.
+            Then, call the <c>GetVisionBoundaries()</c> method to get a vector
+            with the corresponding values.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.SnippetTool.GetVisionBoundaries">
+            <summary>
+            Returns the coordinates of the two edges of the vision rectangle (Xi,Yi),
+            (Xf,Yf) as [Xi,Xf,Yi,Yf]
+            </summary>
+            <returns>Vector of values [Xi,Xf,Yi,Yf]</returns>
+        </member>
+        <member name="F:SharpGVGP.Utils.SnippetTool.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.SnippetTool.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SharpGVGP.Utils.SnippetTool.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.Utils.VirtualMouse">
+            <summary>
+            This class allows mouse control
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.Move(System.Int32,System.Int32)">
+            <summary>
+            Move the mouse relative to its current position
+            </summary>
+            <param name="xDelta">Increment in X direction</param>
+            <param name="yDelta">Increment in Y direction</param>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.MoveTo(System.Int32,System.Int32)">
+            <summary>
+            Move to the desired pixel position on the screen.
+            </summary>
+            <param name="x">X coordinate of the desired pixel</param>
+            <param name="y">Y coordinate of the desired pixel</param>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.LeftClick">
+            <summary>
+            Simulates a left click on the mouse at the cursor's position
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.RightClick">
+            <summary>
+            Simulates a right click of the mouse at the cursor's position
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.MiddleClick">
+            <summary>
+            Simulates a middle click of the mouse at the cursor's position
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.LeftPress">
+            <summary>
+            Hold and don't release the left mouse button.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.RightPress">
+            <summary>
+            Hold and don't release the right mouse button.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.MiddlePress">
+            <summary>
+            Hold and don't release the middle mouse button.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.LeftRelease">
+            <summary>
+            Release the left mouse key.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.RightRelease">
+            <summary>
+            Release the right mouse key.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.MiddleRelease">
+            <summary>
+            Release the middle mouse key.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Utils.VirtualMouse.ReleaseAll">
+            <summary>
+            Release all of the mouse buttons.
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.GenericCBR`3">
+            <summary>
+            Class that allows the implementation of CBR controller with online revise.
+            </summary>
+            <typeparam name="TCase">Type of the input current case.</typeparam>
+            <typeparam name="TSolution">Type of the output solution.</typeparam>
+            <typeparam name="TMetric">Type of the evaluation/ranking metric</typeparam>
+        </member>
+        <member name="M:SharpGVGP.GenericCBR`3.ObjectTask">
+            <summary>
+            This process takes feedback and updates the case base.
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.NeuralNetwork">
+            <summary>
+            This class allows the building of a Neural Network with a general topology.
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.NeuralNetwork.NeuronType">
+            <summary>
+            Types of Neurons available for the Network.
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.NeuralNetwork.NeuronType.Input">
+            <summary>
+            Input neuron. It only admits one input and comes from the medium.
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.NeuralNetwork.NeuronType.Output">
+            <summary>
+            Output neurons. They provide the output of the system.
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.NeuralNetwork.NeuronType.Hidden">
+            <summary>
+            Hidden neurons. They may have several inputs but only one output.
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.NeuralNetwork.Neurons">
+            <summary>
+            Neuron units of the Network.
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.NeuralNetwork.Inputs">
+            <summary>
+            Subset of Neurons which are inputs for the Network
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.NeuralNetwork.Outputs">
+            <summary>
+            Subset of Neurons which are outputs for the Network.
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.NeuralNetwork.Biases">
+            <summary>
+            Subset of Neurons which are biases in the network
+            </summary>
+        </member>
+        <member name="P:SharpGVGP.NeuralNetwork.ConnectionCount">
+            <summary>
+            Total number of connections on the Network.
+            </summary>
+        </member>
+        <member name="P:SharpGVGP.NeuralNetwork.NeuronCount">
+            <summary>
+            Total number of neurons of the Network.
+            </summary>
+        </member>
+        <member name="P:SharpGVGP.NeuralNetwork.IsValid">
+             <summary>
+            Indicates if the Network was built correctly and all of the Neurons
+            can calculate an output.
+             </summary>
+        </member>
+        <member name="M:SharpGVGP.NeuralNetwork.#ctor(System.UInt64,System.UInt64,SharpGVGP.NeuralNetwork.Connection[],SharpGVGP.NeuralNetwork.NeuronType[])">
+            <summary>
+            Get an instance of a Neural Network with custom parameters.
+            </summary>
+            <param name="connectionCount">Number of connections</param>
+            <param name="neuronCount">Number of neurons</param>
+            <param name="connections">Array with all of the connections</param>
+            <param name="neuronTypes">Array with all of the neuron types</param>
+        </member>
+        <member name="M:SharpGVGP.NeuralNetwork.#ctor(System.UInt64,System.UInt64,SharpGVGP.NeuralNetwork.Connection[],SharpGVGP.NeuralNetwork.NeuronType[],SharpGVGP.NeuralNetwork.ActivationFunction)">
+            <summary>
+            Get an instance of a Neural Network with custom parameters.
+            </summary>
+            <param name="connectionCount">Number of connections</param>
+            <param name="neuronCount">Number of neurons</param>
+            <param name="connections">Array with all of the connections</param>
+            <param name="neuronTypes">Array with all of the neuron types</param>
+            <param name="activationFunction">Activation function of the Neural Network</param>
+        </member>
+        <member name="M:SharpGVGP.NeuralNetwork.CheckValidity(SharpGVGP.NeuralNetwork.NeuronInput)">
+            <summary>
+            Checks if an input connection of the neuron is valid.
+            </summary>
+            <param name="input">Neuron connection to be checked.</param>
+            <returns>Returns if the connection is valid</returns>
+        </member>
+        <member name="T:SharpGVGP.NeuralNetwork.ConvolutionalProperties">
+            <summary>
+            Generates properties por a completely convolutional Neural Network
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.Player">
+            <summary>
+            This class is what allows the GVGP agent to play o its own. It can simulate keyboard
+            input, holding and releasing keys.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Player.#ctor(System.Int32,System.String)">
+            <summary>
+            Get an instance of <c>Player</c> class, which allows for keyboard manipulation.
+            </summary>
+            <param name="nKeys">Number of usable keys.</param>
+            <param name="keys">string of the different letters to press</param>
+        </member>
+        <member name="M:SharpGVGP.Player.PressKeys(System.Boolean[])">
+            <summary>
+            Simulate the desired combination of key presses.
+            </summary>
+            <param name="KeyStatus">Array of states desired for the keys.</param>
+        </member>
+        <member name="M:SharpGVGP.Player.ReleaseAll">
+            <summary>
+            Release all the Available Keys.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Player.CharToVirtualKey(System.Char)">
+            <summary>
+            Rectify the <c>char</c> to <c>Keys</c> conversion
+            </summary>
+            <param name="ch"><c>char</c> for conversion</param>
+            <returns>The Virtual Key code of <c>ch</c></returns>
+        </member>
+        <member name="M:SharpGVGP.Player.VkKeyScan(System.Char)">
+            <summary>
+            Allows conversion from <c>char</c> to Virtual Key
+            </summary>
+            <param name="ch"><c>char</c> to be converted</param>
+            <returns>Virtual Key associated to <c>ch</c></returns>
+        </member>
+        <member name="M:SharpGVGP.Player.keybd_event(System.Byte,System.Byte,System.UInt32,System.UInt32)">
+            <summary>
+            Allows for input sending to other applications
+            </summary>
+            <param name="bVk">Virtual Key value</param>
+            <param name="bScan">Set to 0</param>
+            <param name="dwFlags">Hold or release</param>
+            <param name="dwExtraInfo">Set to 0</param>
+        </member>
+        <member name="M:SharpGVGP.Player.Finalize">
+            <summary>
+            Disposes safely of the <c>Player</c> instance.
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.SystemBlock`2">
+            <summary>
+            This class allows for construction of the blocks of the agent's system.
+            To use an instance of this class, the <c>Start()</c> method must be called.
+            To get and input data, the <c>In</c> and <c>Out</c> methods must be used.
+            </summary>
+            <typeparam name="TInput">Input type of the block</typeparam>
+            <typeparam name="TOutput">Output type of the block</typeparam>
+            <seealso cref="T:SharpGVGP.Threader"/>
+        </member>
+        <member name="T:SharpGVGP.SystemBlock`2.ProcessInput">
+            <summary>
+            Process to do with the inputs
+            </summary>
+            <param name="input">Value of the input signal</param>
+            <returns>Returns a <c>TOutput</c> value.</returns>
+        </member>
+        <member name="F:SharpGVGP.SystemBlock`2.InputBuffer">
+            <summary>
+            Primary input buffer of the block
+            </summary>
+        </member>
+        <member name="F:SharpGVGP.SystemBlock`2.OutputBuffer">
+            <summary>
+            Primary output buffer of the block
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.SystemBlock`2.#ctor(SharpGVGP.SystemBlock{`0,`1}.ProcessInput)">
+            <summary>
+            Get an instance of <c>SystemBlock</c>
+            </summary>
+            <param name="Process">Delegate of the process to execute for the
+            inputs</param>
+            <seealso cref="T:SharpGVGP.SystemBlock`2.ProcessInput"/>
+        </member>
+        <member name="M:SharpGVGP.SystemBlock`2.#ctor">
+            <summary>
+            Get an instance of <c>SystemBlock</c>
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.SystemBlock`2.SetProcess(SharpGVGP.SystemBlock{`0,`1}.ProcessInput)">
+            <summary>
+            Set the process to be made to the input.
+            </summary>
+            <param name="Process">Process to do with the input</param>
+        </member>
+        <member name="M:SharpGVGP.SystemBlock`2.In(`0)">
+            <summary>
+            Insert a new value to the input buffer.
+            </summary>
+            <param name="input"><c>TInput</c> value to insert in the queue.</param>
+        </member>
+        <member name="M:SharpGVGP.SystemBlock`2.Out(`1@)">
+            <summary>
+            Get the last output of the block.
+            </summary>
+            <param name="output">Last <c>TOutput</c> value calculated.</param>
+        </member>
+        <member name="M:SharpGVGP.SystemBlock`2.PeekOut(`1@)">
+            <summary>
+            Peeks the last output of the block. Doesn't dequeue it.
+            </summary>
+            <param name="output">Last value on the output queue.</param>
+            <returns>Result state of the operation.</returns>
+        </member>
+        <member name="M:SharpGVGP.SystemBlock`2.ObjectTask">
+            <summary>
+            Task executed by the block every cycle.
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.Threader">
+            <summary>
+            This class stipulates the methods necessary for using classes which perform
+            threading tasks during gameplay as the namespace may manage them.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Threader.#ctor">
+            <summary>
+            Gets an instance of <c>Threader</c>
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Threader.Start">
+            <summary>
+            Begins execution of the thread.
+            </summary>
+            <returns>Status of the operation</returns>
+        </member>
+        <member name="M:SharpGVGP.Threader.Stop">
+            <summary>
+            Stops execution of the thread.
+            </summary>
+            <returns>Status of the operation</returns>
+        </member>
+        <member name="M:SharpGVGP.Threader.TogglePause">
+            <summary>
+            Toggles the pause of the execution of the 
+            object's thread after finishing the current loop.
+            </summary>
+            <returns>Returns the status of the operation.</returns>
+        </member>
+        <member name="M:SharpGVGP.Threader.SetStep">
+            <summary>
+            Allow a single execution cycle for the thread.
+            </summary>
+            <returns>Returns the status of the operation.</returns>
+        </member>
+        <member name="M:SharpGVGP.Threader.ObjectTask">
+            <summary>
+            The threading task the object has to do.
+            Must be implemented by the user.
+            DO NOT USE <c>while(true)</c> ON THE IMPLEMENTATION
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Threader.PausableThread">
+            <summary>
+            Execute the object task as long as the thread hasn't been paused.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Threader.PauseStatus(System.Boolean@)">
+            <summary>
+            Get the current status of the pause flag.
+            </summary>
+            <param name="Status">Variable where the current status of the
+            pause flag will be returned.</param>
+            <returns>Success state of the operation</returns>
+        </member>
+        <member name="M:SharpGVGP.Threader.PendingSteps(System.Int32@)">
+            <summary>
+            Get the steps required before pausing again.
+            </summary>
+            <param name="Steps">Variable where the step count will be
+            returned.</param>
+            <returns>Success state of the operation</returns>
+        </member>
+        <member name="M:SharpGVGP.Threader.SetPause(System.Boolean)">
+            <summary>
+            Sets the pause flag to the desired value.
+            </summary>
+            <param name="NewStatus">New pause flag value.</param>
+            <returns>Success state of the operation.</returns>
+        </member>
+        <member name="M:SharpGVGP.Threader.Finalize">
+            <summary>
+            Disposes safely of any instance of <c>Threader</c>
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.TwoInputsBlock`3">
+            <summary>
+            Allows for two inputs on the same single output System block.
+            It is important to know that this implementation doesn't 
+            Dequeue the elements on the input buffer. 
+            The declared <c>ProcessInput</c> must be able to distinguish
+            if the received input is still the same of a new one, or to not fail
+            when any of the inputs doesn´t change.
+            </summary>
+            <typeparam name="TIn1">Type of the primary input</typeparam>
+            <typeparam name="TIn2">Type of the secondary input</typeparam>
+            <typeparam name="TOut">Type of the output</typeparam>
+        </member>
+        <member name="T:SharpGVGP.TwoInputsBlock`3.ProcessInput">
+            <summary>
+            Process to do with the inputs
+            </summary>
+            <param name="input1">Primary input of the block</param>
+            <param name="input2">Secondary input of the block</param>
+            <returns>Returns a <c>TOut</c> value.</returns>
+        </member>
+        <member name="M:SharpGVGP.TwoInputsBlock`3.#ctor(SharpGVGP.TwoInputsBlock{`0,`1,`2}.ProcessInput)">
+            <summary>
+            Get an instance of <c>TwoInputsBlock</c>.
+            </summary>
+            <param name="Process">Process to do with the inputs</param>
+        </member>
+        <member name="M:SharpGVGP.TwoInputsBlock`3.SetProcess(SharpGVGP.TwoInputsBlock{`0,`1,`2}.ProcessInput)">
+            <summary>
+            Process made to the input signals.
+            </summary>
+            <param name="Process"></param>
+        </member>
+        <member name="M:SharpGVGP.TwoInputsBlock`3.#ctor">
+            <summary>
+            Gets an instance of a two input <c>SystemBlock</c>.
+            Must call SetProcess before using Start.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.TwoInputsBlock`3.In2(`1)">
+            <summary>
+            Insert a new value to the secondary input buffer.
+            </summary>
+            <param name="input"><c>TInput</c> value to insert in the queue.</param>
+        </member>
+        <member name="M:SharpGVGP.TwoInputsBlock`3.ObjectTask">
+            <summary>
+            Task executed by the block every cycle.
+            </summary>
+        </member>
+        <member name="T:SharpGVGP.Visor">
+            <summary>
+            This class allows retrieving of a Screenshot.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Visor.#ctor">
+            <summary>
+            Creates an instance of the <c>Visor</c> class with vision rectangle
+            dimensions 0x0.
+            </summary>
+        </member>
+        <member name="M:SharpGVGP.Visor.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates an instance of the <c>Visor</c> class with vision rectangle
+            dimensions set by the user.
+            </summary>
+            <param name="xi">X coordinate of the top left corner</param>
+            <param name="xf">X coordinate of the bottom right corner</param>
+            <param name="yi">Y coordinate of the top left corner</param>
+            <param name="yf">Y coordinate of the bottom right corner</param>
+        </member>
+        <member name="M:SharpGVGP.Visor.#ctor(System.Int32[])">
+            <summary>
+            Creates an instance of the <c>Visor</c> class with vision rectangle
+            dimensions set by the user.
+            </summary>
+            <param name="coordinates">Vector with the coordinates of the
+            vision rectangle. {Xi,Xf,Yi,Yf}</param>
+        </member>
+        <member name="M:SharpGVGP.Visor.SetVisionRectangle(System.Int32[])">
+            <summary>
+            Allows setting the vision rectangle using a vector containing the 
+            dimensions set by the user.
+            </summary>
+            <param name="coordinates">Vector with the coordinates of the
+            vision rectangle. {Xi,Xf,Yi,Yf}</param>
+            <returns>Returns if the selected triangle is valid</returns>
+        </member>
+        <member name="M:SharpGVGP.Visor.SetVisionRectangle(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Allows setting of the vision rectangle.
+            </summary>
+            <param name="xi">X coordinate of the top left corner</param>
+            <param name="xf">X coordinate of the bottom right corner</param>
+            <param name="yi">Y coordinate of the top left corner</param>
+            <param name="yf">Y coordinate of the bottom right corner</param>
+            <returns>Returns if the selected triangle is valid</returns>
+        </member>
+        <member name="M:SharpGVGP.Visor.GetMaxRes">
+            <summary>
+            Returns the maximum resolution available for the complete current
+            vision area.
+            </summary>
+            <returns><c>{X resolution, Y resolution}</c></returns>
+        </member>
+        <member name="M:SharpGVGP.Visor.GetMaxRes(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns the maximum resolution available for a displaced sub-section
+            of the current vision area.
+            </summary>
+            <param name="offXi">Displacement of the top left X coordinate in pixels</param>
+            <param name="offYi">Displacement of the top left Y coordinate in pixels</param>
+            <param name="spanX">Width of the sub-section in pixels</param>
+            <param name="spanY">Height of the sub-section in pixels</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpGVGP.Visor.GetMaxXY(System.Int32,System.Int32)">
+            <summary>
+            Returns the maximum X and Y displacement for the given Witdh and
+            Height of the vision sub-section.
+            </summary>
+            <param name="spanX">Width of the sub-section in pixels</param>
+            <param name="spanY">Height of the sub-section in pixels</param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpGVGP.Visor.GetViewHD(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns a full-resolution image of the specified subsection of the
+            vision sub-section
+            </summary>
+            <param name="offXi">Displacement of the top left X coordinate in pixels</param>
+            <param name="offYi">Displacement of the top left Y coordinate in pixels</param>
+            <param name="spanX">Width of the sub-section in pixels</param>
+            <param name="spanY">Height of the sub-section in pixels</param>
+            <returns>Three-dimensional matrix where the indices are
+            <c>{(R(0), G(1) or B(2)),Y,X}</c></returns>
+        </member>
+        <member name="M:SharpGVGP.Visor.GetViewHD">
+            <summary>
+            Returns a full-resolution image of the complete vision area
+            </summary>
+            <returns>Three-dimensional matrix where the indices are
+            <c>{(R(0), G(1) or B(2)),Y,X}</c></returns>
+        </member>
+        <member name="M:SharpGVGP.Visor.GetView(System.Int32,System.Int32)">
+            <summary>
+            Returns a downsampled verion of the complete vision area. Pixels on
+            the same sub-rectangle are averaged together.
+            </summary>
+            <param name="NRows">Number of rows of the downsampled image matrix</param>
+            <param name="NColumns">Number of columns of the downsampled image matrix</param>
+            <returns>Three-dimensional matrix where the indices are
+            <c>{(R(0), G(1) or B(2)),Y,X}</c></returns>
+        </member>
+        <member name="M:SharpGVGP.Visor.GetView(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Returns a downsampled version of the specified sub-section of the
+            vision area. Pixels on the same sub-rectangle are averaged together.
+            </summary>
+            <param name="NRows">Number of rows of the downsampled image matrix</param>
+            <param name="NColumns">Number of columns of the downsampled image matrix</param>
+            <param name="OffXi">Displacement of the top left X coordinate in pixels</param>
+            <param name="OffYi">Displacement of the top left Y coordinate in pixels</param>
+            <param name="SpanX">Width of the sub-section in pixels</param>
+            <param name="SpanY">Height of the sub-section in pixels</param>
+            <returns>Three-dimensional matrix where the indices are
+            <c>{(R(0), G(1) or B(2)),Y,X}</c></returns>
+        </member>
+    </members>
+</doc>
